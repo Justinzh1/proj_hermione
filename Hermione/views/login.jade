@@ -1,0 +1,25 @@
+extends layout
+
+block extrahead
+  link(rel='stylesheet', href='/stylesheets/form.css')
+
+block content
+    .wrapper
+      .form-container
+        .sign-in
+          .left-block
+          h1#left Login
+          h1#right Register
+          .right-block
+        .sign-up
+        form(action='login', method='post')
+        .entry.username
+          h2 username
+          input(type='text', name='username', value='oski')
+        .entry.password
+          h2 password
+          input(type='password', name='password', value="password")
+        .submit-container
+          .entry.submit
+            input#submit-btn(type='submit', value='GO')
+        p.forgot Forgot my password

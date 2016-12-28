@@ -12,7 +12,6 @@ a {
 }
 
 #bg {
-    /*margin-top: 80px;*/
     width: 100%;
     position: absolute;
     z-index: -1;
@@ -22,6 +21,7 @@ a {
 
 #vid {
     width: 100%;
+    min-height: 300px;
     position: relative;
     z-index: -1;
 }
@@ -43,7 +43,7 @@ a {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    width: 60%;
+    width: 50%;
     height: auto;
 }
 
@@ -92,6 +92,7 @@ a {
     z-index: 5;
     height: 60vh;
     transition: background-color 500ms ease-in;
+    -webkit-transition: background-color 500ms ease-in;
     text-align: center;
 }
 
@@ -170,7 +171,7 @@ a {
 }
 
 .rights {
-    padding: 20px;
+    padding: 10px;
     background-color: #003262;
     color: white;
 }

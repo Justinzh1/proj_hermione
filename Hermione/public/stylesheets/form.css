@@ -1,0 +1,115 @@
+h1 {
+    font-size: 30px;
+    color: #003262;
+    display: inline-block;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 15px;
+    color: #BDBDBD;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    font-size: 20px;
+}
+
+input {
+    font-size: 20px;
+    width: calc(100% - 40px);
+    height: 30px;
+    border: none;
+    border-bottom: #BDBDBD 5px solid;
+    outline: none;
+    transition: border-bottom 500ms ease-in;
+}
+
+input:focus {
+    border-bottom: #003262 5px solid;
+}
+
+#submit-btn {
+    background-color: white;
+    font-family: 'fira sans';
+    color: #BDBDBD;
+    border: #BDBDBD 4px solid;
+    width: 150px;
+    padding: 10px;
+    height: auto;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+#left {
+    display: inline-block;
+}
+
+#right {
+    color: #BDBDBD;
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+}
+
+.left-block {
+    width: 8px;
+    height: 50px;
+    background-color: #003262;
+    position: relative;
+    margin-right: 10px;
+    top: 15px;
+    left: -15px;
+    display: inline-block;
+}
+
+.right-block {
+    width: 8px;
+    height: 50px;
+    background-color: #BDBDBD;
+    position: relative;
+    top: 15px;
+    left: 392px;
+    display: inline-block;
+}
+
+.wrapper {
+    height: 100%;
+    width: 100%;
+    background-image: url("/images/tiny_grid.png");
+    text-align: center;
+}
+
+.form-container {
+    margin-top: 30px;
+    background-color: white;
+    display: inline-block;
+    height: 500px;
+    width: 500px;
+    text-align: left;
+    padding: 15px;
+    padding-top: 30px;
+}
+
+.entry {
+    display: inline-block;
+    padding: 20px;
+    width: 100%;
+}
+
+.sign-in {
+    text-transform: uppercase;
+}
+
+.submit-container {
+    width: calc(100% - 40px);
+    text-align: center;
+}
+
+.forgot {
+    color: #BDBDBD;
+    margin-left: 20px;
+}
