@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  .container
+      .cover#bg
+        video#vid(loop='loop', autoplay='autoplay')
+          source(src="images/kanban-board.mp4" type="video/mp4")
+      .split.left
+        .button.student student
+      .split.right
+        .button.teacher teacher
+      .infographic
+        .box
+          .logo.asucbg
+            image#asucimg(src="images/asuc.png")
+          .caption.asuccap ASUC
+        .box
+          .logo.octo
+            image#octoimg(src="images/octo.svg")
+          .caption.octocap ASUC Chief Technology Office
+        .box
+          .logo.cal
+            image#calimg(src="images/cal.svg")
+          .caption.calcap University of California Berkeley
+
+    script(type='text/javascript', src='https://code.jquery.com/jquery-3.1.1.slim.min.js')
+    script(type='text/javascript', src='javascripts/index.js')
