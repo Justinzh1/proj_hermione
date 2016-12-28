@@ -152,3 +152,25 @@ a {
     padding: 15px 0px;
     width: 250px;
 }
+
+.footer {
+    padding: 15px;
+    padding-top: 50px;
+    height: auto;
+    min-height: 300px;
+    text-align: center;
+}
+
+.subfooter {
+    margin: 15px;
+    display: inline-block;
+    width: 250px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.rights {
+    padding: 20px;
+    background-color: #003262;
+    color: white;
+}
