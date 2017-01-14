@@ -9,17 +9,22 @@ block content
         .sign-in
           .left-block
           h1#left Login
-          h1#right Register
-          .right-block
+          h1#right
+            a#signup(href='/signup') Signup
         .sign-up
-        form(action='login', method='post')
-        .entry.username
-          h2 username
-          input(type='text', name='username', value='oski')
-        .entry.password
-          h2 password
-          input(type='password', name='password', value="password")
-        .submit-container
-          .entry.submit
-            input#submit-btn(type='submit', value='GO')
+        .messages(style="margin-left: 20px")
+          h2 Messages go here: #{ message }
+        form(action='/login', method='post')
+          .entry.username
+            h2 username
+            input(type='text', name='email')
+          .entry.password
+            h2 password
+            input(type='password', name='password')
+          .entry
+            a(href='/auth/google')
+              span Sign in with Google
+          .submit-container
+            .entry.submit
+              button#submit-btn(type='submit') Go
         p.forgot Forgot my password

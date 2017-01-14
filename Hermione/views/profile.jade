@@ -1,0 +1,81 @@
+extends layout
+
+- var role = #{user.local.role}
+
+block extrahead
+  link(rel='stylesheet' href='/stylesheets/dash.css')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+
+block content
+  div.container(style="padding:20px")
+    h1 [DEBUG] Profile Page
+    p
+      strong id
+      #{user._id}
+    p
+      strong #{user.local.role}
+    p
+      strong #{user.local.email}
+    p
+      strong password
+      #{user.local.password}
+
+  .class-dashboard
+    a(href='/classes/new')
+      .class-dashboard-new.other
+        p#new-text +
+    .class-dashboard-card
+        h1.card-title CS61A
+        .class-card-info
+          .class-sub-card
+            h3 5
+            p videos
+          .class-sub-card
+            h3 143
+            p students
+          .class-sub-card
+            h3 12
+            p week
+    .class-dashboard-card.other
+        h1.card-title CS61B
+        .class-card-info
+          .class-sub-card
+            h3 5
+            p videos
+          .class-sub-card
+            h3 143
+            p students
+          .class-sub-card
+            h3 12
+            p week
+    .class-dashboard-card.other
+        h1.card-title CS61C
+        .class-card-info
+          .class-sub-card
+            h3 5
+            p videos
+          .class-sub-card
+            h3 143
+            p students
+          .class-sub-card
+            h3 12
+            p week
+
+  .dashboard
+    .video-container
+      .videolist
+        .video-header
+          i.fa.fa-window-maximize.icon
+          h1 CS61A
+          p.desc Structures and Interpretations of Computer Programs
+          .instructors
+            .instructor
+              p John Denero
+        .video-sublist
+          .video-item
+            h2.title lecture 1
+            p.length 43 min
+            p Jan 13 2017
+            .bookmark
+              i.fa.fa-bookmark-o#book
+    .card-container

@@ -1,0 +1,23 @@
+extends layout
+
+block extrahead
+  link(rel='stylesheet', href='/stylesheets/form.css')
+
+block content
+  div(style="padding:20px; text-align: center;")
+    .form-container
+      .entry
+        h1 Add a new Class
+      form(action='/classes/new', method='post')
+        .entry
+          h2 classname
+          input(type='text', name='classname')
+        .entry
+          h2 professor(s)
+          input(type='text', name='professors')
+        .entry
+          h2 description
+          input(type='textarea', name='description')
+        .submit-container
+          .entry.submit
+            button#submit-btn(type='submit') Go

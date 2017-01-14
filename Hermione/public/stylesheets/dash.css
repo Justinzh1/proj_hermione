@@ -1,0 +1,217 @@
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+#new-card {
+    font-size: 80px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    transition: 500ms;
+    vertical-align: top;
+}
+
+#book {
+    position: absolute;
+    bottom: -20px;;
+    right: 0;
+}
+
+#new-text {
+    font-size: 60px;
+}
+
+.class-dashboard {
+    height: 150px;
+    width: 100%;
+    overflow-x: scroll;
+    padding: 0 25px;
+}
+
+.class-dashboard-new:hover {
+    background-color: white;
+    color: #003262;;
+}
+
+.class-dashboard-new {
+    background-color: white;
+    border: 4px solid #003262;
+    color: #003262;
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    margin-right: 20px;
+    vertical-align: top;
+    transition: background-color 500ms ease-out
+}
+
+.class-dashboard-card {
+    background-color: white;
+    border: 4px solid #003262;
+    color: #003262;
+    width: 250px;
+    height: 80px;
+    padding: 10px;
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    margin-right: 20px;
+    vertical-align: top;
+}
+
+.other {
+    color: white;
+    background-color: #003262;
+}
+
+.card-title {
+    position: float;
+    float: left;
+}
+
+.class-card-info {
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    top: 10%;
+}
+
+.class-sub-card {
+    width: 80px;
+    height: 50px;
+    display: inline-block;
+    text-align: center;
+}
+
+.class-sub-card h3 {
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard {
+    width: 100%;
+    height: 800px;
+}
+
+.video-container {
+    height: 100%;
+    width: 350px;
+    display: inline-block;
+}
+.videolist {
+    width: 300px;
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+    padding-left: 25px;
+}
+
+.video-header {
+    padding: 20px 20px;
+    font-size: 20px;
+    height: auto;
+    background-color: rgba(50,0,0,0.3);
+}
+
+.video {
+    width: calc(100% - 300px);
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+}
+
+.desc {
+    font-size: 14px;
+    padding: none;
+}
+
+.instructors {
+    width: 100%;
+    margin: 5px 0;
+    padding: 5px 0;
+}
+
+.instructor {
+    font-size: 14px;
+    height: 20px;
+    width: auto;
+}
+
+.instructor p {
+    width: auto;
+    display: inline-block;
+    padding: 5px 10px;
+    color: white;
+    font-family: 'fira sans';
+    font-weight: 100;
+    background-color: #2196F3;
+}
+
+.icon {
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+
+.video-sublist {
+    height: calc(100% - 200px);
+    background-color: rgba(0,50,0,0.3);
+    overflow-y: scroll;
+    text-align: center;
+    position: relative;
+    vertical-align: top;
+}
+
+.video-item {
+    display: inline-block;
+    padding: 10px;
+    height: 60px;
+    width: 80%;
+    margin: 20px 0;
+    background-color: white;
+    text-align: left;
+}
+
+.title {
+    display: inline-block;
+    width: auto;
+}
+
+.length {
+    position: relative;
+    float: right;
+    margin-top: 5px;
+}
+
+.bookmark {
+    position: relative;
+    bottom: 0;
+    font-size: 20px;
+}
+
+.card-container {
+    width: 680px;
+    height: 400px;
+    display: inline-block;
+    background-color: grey;
+    vertical-align: top;
+}

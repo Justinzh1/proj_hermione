@@ -1,0 +1,34 @@
+extends layout
+
+block extrahead
+  link(rel='stylesheet', href='/stylesheets/form.css')
+
+block content
+  .wrapper
+    .form-container
+      .sign-in
+        .left-block
+        h1#left Signup
+        h1#right
+          a#signup(href='/login') Login
+      .sign-up
+      .messages(style="margin-left: 20px")
+        h2 Messages go here: #{ message }
+      form(action='/signup', method='post')
+        .entry.username
+          h2 username
+          input(type='text', name='email')
+        .entry.password
+          h2 password
+          input(type='password', name='password')
+        .entry
+          select(name='role')
+            option(value='student' selected='selected') student
+            option(value='professor') professor
+        .entry
+          a(href='/auth/google')
+            span Sign in with Google
+        .submit-container
+          .entry.submit
+            button#submit-btn(type='submit') Go
+      p.forgot Forgot my password

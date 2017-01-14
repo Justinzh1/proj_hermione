@@ -46,13 +46,23 @@ input:focus {
 
 #left {
     display: inline-block;
+    vertical-align: top;
 }
 
 #right {
-    color: #BDBDBD;
+    background-color: #E0E0E0;
+    color: white;
     display: inline-block;
+    vertical-align: top;
     float: right;
-    margin-right: 10px;
+    position: relative;
+    top: -15px;
+    right: -15px;
+    padding: 10px 15px;
+}
+
+#signup {
+    color: white;
 }
 
 .left-block {
@@ -87,7 +97,8 @@ input:focus {
     margin-top: 30px;
     background-color: white;
     display: inline-block;
-    height: 500px;
+    min-height: 500px;
+    height: auto;
     width: 500px;
     text-align: left;
     padding: 15px;

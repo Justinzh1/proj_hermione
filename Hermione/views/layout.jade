@@ -7,6 +7,16 @@ html
     block extrahead
   body
     .navbar
-      .hermione hermione
+      .hermione
+        a(href='/') hermione
+      ul.navbar-side
+        if !user
+          a(href="/login")
+            li login
+          a(href="/signup")
+            li signup
+        else
+          a(href="/logout")
+            li logout
 
     block content
