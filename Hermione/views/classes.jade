@@ -1,5 +1,19 @@
 extends layout
 
+- var classes = #{classes}
+
 block content
-  h1 Class
-  #{classData}
+  h1 Classes
+  - each c in classes
+    h1= c.title
+    p= c.description
+    - var professors = c.professors
+    - each p in professors
+      p=p.name
+    - var videos = c.videos
+    - each v in videos
+      p
+        strong=v.title
+      a(href=v.link)=v.link
+      p=v.date
+
