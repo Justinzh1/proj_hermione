@@ -1,0 +1,64 @@
+extends layout
+
+- var role = #{user.local.role}
+- var classes = #{classes}
+
+block extrahead
+  link(rel='stylesheet' href='/stylesheets/dash.css')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+
+block content
+
+  .class-dashboard
+    if role == "professor"
+      a(href='/profile/classes/new')
+        .class-dashboard-new.other
+          p#new-text +
+    else
+      a(href='/profile/classes/enroll')
+        .class-dashboard-new.other
+          p#new-text +
+
+    each c in classes
+      .class-dashboard-card
+          h1.card-title=c.title
+          .class-card-info
+            .class-sub-card
+              h3 5
+              p videos
+            .class-sub-card
+              h3 143
+              p students
+            .class-sub-card
+              h3 12
+              p week
+
+  .dashboard
+    .video-container
+      .videolist
+        .video-header
+          i.fa.fa-window-maximize.icon
+          h1 #{classes[0].title}
+          p.desc #{classes[0].description}
+          .instructors
+            .instructor
+              - var prof = classes[0].professors
+                each t in prof
+                  p=t.name
+        .video-sublist
+          if role == "professor"
+            a(href="/profile/classes/video/new")
+              .new-video
+                .video-item.new-video-item 
+                  p +
+                  
+          - var lectures = classes[0].videos
+          each l in lectures
+            .video-item
+              a(href=l.link)
+                h2.title=l.title
+              p.length 43 min
+              p Jan 13 2017
+              .bookmark
+                i.fa.fa-bookmark-o#book
+    .card-container

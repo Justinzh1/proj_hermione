@@ -1,6 +1,17 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var mongoose = require('mongoose');
+
+var classSchema = mongoose.Schema({
+    title: String,
+    description: String,
+    professors: [{ name: String }],
+    videos: [{ title: String, id: Number, link: String, date: Date}]
+});
+
+var ClassModel = mongoose.model('classes', classSchema);
+var db = mongoose.model('classes');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -45,9 +56,73 @@ router.get('/signup', function(req, res) {
 // we will want this protected so you have to be logged in to visit
 // we will use route middleware to verify this (the isLoggedIn function)
 router.get('/profile', isLoggedIn, function(req, res) {
-    res.render('profile', {
-        user : req.user // get the user out of session and pass to template
+    // res.render('profile', {
+    //     user : req.user // get the user out of session and pass to template
+    // });
+    // 
+    var courses = req.user.local.Classes;
+    courses = courses.map(function(c) { return c.class; });
+    var enrolled = ClassModel.find({ title : {$in: courses} }, function(err, c) {
+        console.log(c);
+        if (err || c == {}) {
+            console.log('case 1');
+            res.render('dashboard', {
+                user: req.user
+            });
+        }
+        res.render('dashboard', {
+            user: req.user,
+            classes: c
+        });
     });
+});
+
+// =====================================
+// CLASS SECTION  ======================
+// =====================================
+ 
+router.get('/profile/classes', function(req, res, next) {
+    ClassModel.find({}, function(err, classes) {
+        if (err) throw err;
+        res.render('classes', { "classes" : classes });
+    });
+});
+
+
+router.get('/profile/classes/new', isLoggedIn, function(req, res) {
+    res.render('new_class', {});
+});
+
+
+router.post('/profile/classes/new', function(req, res, next) {
+    var professors = req.body.professors.split(',');
+    var alt_professors = req.body.professors.split(', ');
+    if (alt_professors.length > professors.length) {
+        professors = alt_professors;
+    }
+    console.log(req.body);
+    var new_class = new ClassModel({
+        title : req.body.title,
+        description : req.body.description,
+        professors : [],
+        videos : []
+    });
+    console.log(new_class);
+    new_class.save(function(err, post) {
+        if (err) {
+            return next(err);
+        }
+        console.log('Saved class: ' + new_class);
+        res.json(201, post);
+    });
+    // db.find({}, function(err, classes) {
+    //     if (err) throw err;
+    //     res.render('classes', { "classes" : classes });
+    // });
+});
+
+router.get('/profile/classes/video/new', function(req,res) {
+    res.render('video', {});
 });
 
 // =====================================
@@ -70,7 +145,12 @@ router.post('/login',
         successRedirect : '/profile',
         failureRedirect : '/login',
         failureFlash : true
-}));
+    }), 
+    function(req, res) {
+        req.session.save(() => {
+            res.redirect('/profile');
+        })
+});      
 
 router.get('/auth/google', passport.authenticate('google', {
     scope : ['profile', 'email']

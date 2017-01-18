@@ -1,0 +1,11 @@
+.container {
+    padding: 30px;
+}
+
+.classbin {
+    padding: 20px 40px;
+    width: 600px;
+    border: solid grey 4px;
+    margin: 10px 0;
+    margin-bottom: 30px;
+}

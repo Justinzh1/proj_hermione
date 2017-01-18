@@ -2,18 +2,23 @@ extends layout
 
 - var classes = #{classes}
 
+block extrahead
+  link(rel='stylesheet', href='/stylesheets/classes.css')
+
 block content
-  h1 Classes
-  - each c in classes
-    h1= c.title
-    p= c.description
-    - var professors = c.professors
-    - each p in professors
-      p=p.name
-    - var videos = c.videos
-    - each v in videos
-      p
-        strong=v.title
-      a(href=v.link)=v.link
-      p=v.date
+  .container
+    h1 Classes
+    - each c in classes
+      .classbin
+        h1= c.title
+        p= c.description
+        - var professors = c.professors
+        - each p in professors
+          p=p.name
+        - var videos = c.videos
+        - each v in videos
+          p
+            strong=v.title
+          a(href=v.link)=v.link
+          p=v.date
 

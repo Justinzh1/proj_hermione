@@ -1,0 +1,28 @@
+extends layout
+
+block extrahead
+  link(rel='stylesheet', href='/stylesheets/form.css')
+  link(rel='stylesheet', href='/stylesheets/video.css')
+
+block content
+  .wrapper
+    .form-container
+      h1 Add a new video
+      form(action='/signup', method='post')
+        .entry.username
+          h2 username
+          input(type='text', name='email')
+        .entry.password
+          h2 password
+          input(type='password', name='password')
+        .entry
+          select(name='role')
+            option(value='student' selected='selected') student
+            option(value='professor') professor
+        .entry
+          a(href='/auth/google')
+            span Sign in with Google
+        .submit-container
+          .entry.submit
+            button#submit-btn(type='submit') Go
+      p.forgot Forgot my password

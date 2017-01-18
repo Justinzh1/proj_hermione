@@ -117,6 +117,7 @@ p {
     width: 350px;
     display: inline-block;
 }
+
 .videolist {
     width: 300px;
     display: inline-block;
@@ -127,6 +128,7 @@ p {
 
 .video-header {
     padding: 20px 20px;
+    padding-bottom: 0;
     font-size: 20px;
     height: auto;
     background-color: rgba(50,0,0,0.3);
@@ -148,17 +150,18 @@ p {
     width: 100%;
     margin: 5px 0;
     padding: 5px 0;
+    height: auto;
 }
 
 .instructor {
     font-size: 14px;
-    height: 20px;
     width: auto;
 }
 
 .instructor p {
     width: auto;
     display: inline-block;
+    margin-bottom: 10px;
     padding: 5px 10px;
     color: white;
     font-family: 'fira sans';
@@ -181,12 +184,29 @@ p {
     vertical-align: top;
 }
 
+.new-video-item {
+    text-align: center;
+    font-size: 36px;
+    width: 100%;
+}
+
+.new-video-item p {
+    color: black;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    margin: 0 auto;
+}
+
 .video-item {
     display: inline-block;
     padding: 10px;
     height: 60px;
     width: 80%;
-    margin: 20px 0;
+    margin-top: 20px;
     background-color: white;
     text-align: left;
 }
