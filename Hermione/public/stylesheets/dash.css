@@ -113,7 +113,7 @@ p {
 }
 
 .video-container {
-    height: 100%;
+    height: auto;
     width: 350px;
     display: inline-block;
 }
@@ -176,7 +176,8 @@ p {
 }
 
 .video-sublist {
-    height: calc(100% - 200px);
+    height: 400px;
+    padding-bottom: 20px;
     background-color: rgba(0,50,0,0.3);
     overflow-y: scroll;
     text-align: center;
@@ -209,6 +210,7 @@ p {
     margin-top: 20px;
     background-color: white;
     text-align: left;
+    transition: background-color 500ms;
 }
 
 .title {
@@ -234,4 +236,27 @@ p {
     display: inline-block;
     background-color: grey;
     vertical-align: top;
+}
+
+.enroll {
+    width: 50px;
+}
+
+#video-name {
+    margin-bottom: 15px;
+}
+
+.right-container {
+    width: 500px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#active {
+    background-color: #003262;
+    color: white;
+}
+
+#active a {
+    color: white;
 }

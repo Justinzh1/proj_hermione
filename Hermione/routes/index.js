@@ -7,7 +7,8 @@ var classSchema = mongoose.Schema({
     title: String,
     description: String,
     professors: [{ name: String }],
-    videos: [{ title: String, id: Number, link: String, date: Date}]
+    videos: [{ title: String, id: Number, link: String, date: Date}],
+    code: String
 });
 
 var ClassModel = mongoose.model('classes', classSchema);
@@ -63,15 +64,15 @@ router.get('/profile', isLoggedIn, function(req, res) {
     var courses = req.user.local.Classes;
     courses = courses.map(function(c) { return c.class; });
     var enrolled = ClassModel.find({ title : {$in: courses} }, function(err, c) {
-        console.log(c);
+        // console.log(c);
         if (err || c == {}) {
-            console.log('case 1');
             res.render('dashboard', {
                 user: req.user
             });
         }
         res.render('dashboard', {
             user: req.user,
+            role: req.user.local.role,
             classes: c
         });
     });
@@ -100,19 +101,19 @@ router.post('/profile/classes/new', function(req, res, next) {
     if (alt_professors.length > professors.length) {
         professors = alt_professors;
     }
-    console.log(req.body);
+    // console.log(req.body);
     var new_class = new ClassModel({
         title : req.body.title,
         description : req.body.description,
         professors : [],
         videos : []
     });
-    console.log(new_class);
+    // console.log(new_class);
     new_class.save(function(err, post) {
         if (err) {
             return next(err);
         }
-        console.log('Saved class: ' + new_class);
+        // console.log('Saved class: ' + new_class);
         res.json(201, post);
     });
     // db.find({}, function(err, classes) {
@@ -123,6 +124,26 @@ router.post('/profile/classes/new', function(req, res, next) {
 
 router.get('/profile/classes/video/new', function(req,res) {
     res.render('video', {});
+});
+
+router.post('/profile/enroll', function(req,res) {
+    // console.log("adding a class to profile " + req.body.code);
+    ClassModel.find({code : req.body.code}, function(err, classes) {
+        if (err) throw err;
+
+        var user = req.user;
+        classes = classes[0];
+        if (classes) {
+            // console.log({"class" : classes.title});
+            user.local.Classes.push({"class" : classes.title });
+            user.save(function(err) {               
+            });
+            // console.log("Added " + classes.title + " to \n " + user);
+            res.redirect('/profile');
+        } else {
+            // console.log('class not found');
+        }
+    });
 });
 
 // =====================================
