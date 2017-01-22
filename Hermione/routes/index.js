@@ -7,8 +7,15 @@ var classSchema = mongoose.Schema({
     title: String,
     description: String,
     professors: [{ name: String }],
-    videos: [{ title: String, id: Number, link: String, date: Date}],
-    code: String
+    videos: [{ 
+                title: String, 
+                id: Number, 
+                link: String, 
+                date: Date,
+                timestamps : [{ time: Number, subject: String }]
+            }],
+    code: String,
+    year: String
 });
 
 var ClassModel = mongoose.model('classes', classSchema);
@@ -97,29 +104,56 @@ router.get('/profile/classes/new', isLoggedIn, function(req, res) {
 
 router.post('/profile/classes/new', function(req, res, next) {
     var professors = req.body.professors.split(',');
-    var alt_professors = req.body.professors.split(', ');
-    if (alt_professors.length > professors.length) {
-        professors = alt_professors;
+    var class_name = req.body.title;
+    var professors_map = [];
+    for (var i = 0; i < professors.length; i++ ) {
+        professors_map.push({ name : professors[i] });
     }
-    // console.log(req.body);
+    console.log(professors_map);
+    /** 
+     * Find and Save Class
+     */
+     
     var new_class = new ClassModel({
         title : req.body.title,
         description : req.body.description,
-        professors : [],
-        videos : []
+        professors : professors_map,
+        videos : [],
+        code : req.body.code,
+        year : req.body.year
     });
-    // console.log(new_class);
     new_class.save(function(err, post) {
         if (err) {
             return next(err);
         }
-        // console.log('Saved class: ' + new_class);
         res.json(201, post);
     });
-    // db.find({}, function(err, classes) {
-    //     if (err) throw err;
-    //     res.render('classes', { "classes" : classes });
-    // });
+
+    ClassModel.find({code : req.body.code}, function(err, classes) {
+        if (err) throw err;
+
+        var user = req.user;
+        classes = classes[0];
+        if (classes) {
+            user.local.Classes.push({"class" : classes.title });
+            user.save(function(err) {               
+            });
+        }
+    });
+
+    /**
+     * Render Profile/Dashboard
+     */
+    
+    var courses = req.user.local.Classes;
+    courses = courses.map(function(c) { return c.class; });
+    var enrolled = ClassModel.find({ title : {$in: courses} }, function(err, c) {
+        console.log('redirecting');
+        if (err || c == {}) {
+            // res.redirect('/profile');
+        }
+        res.redirect('/profile');
+    });
 });
 
 router.get('/profile/classes/video/new', function(req,res) {
@@ -127,21 +161,17 @@ router.get('/profile/classes/video/new', function(req,res) {
 });
 
 router.post('/profile/enroll', function(req,res) {
-    // console.log("adding a class to profile " + req.body.code);
     ClassModel.find({code : req.body.code}, function(err, classes) {
         if (err) throw err;
 
         var user = req.user;
         classes = classes[0];
         if (classes) {
-            // console.log({"class" : classes.title});
             user.local.Classes.push({"class" : classes.title });
             user.save(function(err) {               
             });
-            // console.log("Added " + classes.title + " to \n " + user);
             res.redirect('/profile');
         } else {
-            // console.log('class not found');
         }
     });
 });
