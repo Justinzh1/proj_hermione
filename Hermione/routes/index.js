@@ -63,6 +63,7 @@ router.get('/signup', function(req, res) {
 // =====================================
 // we will want this protected so you have to be logged in to visit
 // we will use route middleware to verify this (the isLoggedIn function)
+// SEE MORE [http://stackoverflow.com/questions/24922466/passing-variables-on-res-redirect]
 router.get('/profile', isLoggedIn, function(req, res) {
     // res.render('profile', {
     //     user : req.user // get the user out of session and pass to template
@@ -85,9 +86,9 @@ router.get('/profile', isLoggedIn, function(req, res) {
     });
 });
 
-// =====================================
-// CLASS SECTION  ======================
-// =====================================
+/** 
+ * Class Section
+ */
  
 router.get('/profile/classes', function(req, res, next) {
     ClassModel.find({}, function(err, classes) {
@@ -101,19 +102,26 @@ router.get('/profile/classes/new', isLoggedIn, function(req, res) {
     res.render('new_class', {});
 });
 
+/**
+ * Functions
+ */
 
-router.post('/profile/classes/new', function(req, res, next) {
+function addController(req,res,next) {
     var professors = req.body.professors.split(',');
     var class_name = req.body.title;
     var professors_map = [];
     for (var i = 0; i < professors.length; i++ ) {
         professors_map.push({ name : professors[i] });
     }
-    console.log(professors_map);
+
     /** 
      * Find and Save Class
      */
-     
+    var user = req.user;
+    user.local.Classes.push({"class" : class_name});
+    user.save(function(err) {
+
+    });
     var new_class = new ClassModel({
         title : req.body.title,
         description : req.body.description,
@@ -128,33 +136,24 @@ router.post('/profile/classes/new', function(req, res, next) {
         }
         res.json(201, post);
     });
+    return next();
+}
 
-    ClassModel.find({code : req.body.code}, function(err, classes) {
-        if (err) throw err;
-
-        var user = req.user;
-        classes = classes[0];
-        if (classes) {
-            user.local.Classes.push({"class" : classes.title });
-            user.save(function(err) {               
-            });
-        }
-    });
-
-    /**
-     * Render Profile/Dashboard
-     */
-    
+function redirectController(req,res) {
     var courses = req.user.local.Classes;
     courses = courses.map(function(c) { return c.class; });
-    var enrolled = ClassModel.find({ title : {$in: courses} }, function(err, c) {
-        console.log('redirecting');
-        if (err || c == {}) {
-            // res.redirect('/profile');
-        }
-        res.redirect('/profile');
+    ClassModel.find({ title : {$in: courses} }, function(err, c) {
+        console.log('classes ' + c);
+        if (err) throw err;
+        res.render('dashboard', {
+            user: req.user,
+            role: req.user.local.role,
+            classes: c
+        });
     });
-});
+}
+
+router.post('/profile/classes/new', addController, redirectController);
 
 router.get('/profile/classes/video/new', function(req,res) {
     res.render('video', {});
@@ -170,8 +169,7 @@ router.post('/profile/enroll', function(req,res) {
             user.local.Classes.push({"class" : classes.title });
             user.save(function(err) {               
             });
-            res.redirect('/profile');
-        } else {
+            res.send({redirect : '/profile'});
         }
     });
 });
