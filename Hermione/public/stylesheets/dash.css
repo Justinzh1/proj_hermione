@@ -213,6 +213,17 @@ p {
     transition: background-color 500ms;
 }
 
+.video-item-new {
+    display: inline-block;
+    padding: 10px;
+    height: 60px;
+    width: 80%;
+    margin-top: 20px;
+    background-color: white;
+    text-align: left;
+    transition: background-color 500ms;
+}
+
 .title {
     display: inline-block;
     width: auto;
