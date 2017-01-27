@@ -135,22 +135,27 @@ function addController(req,res,next) {
             return next(err);
         }
         res.json(201, post);
+        return next();
     });
-    return next();
 }
 
 function redirectController(req,res) {
-    var courses = req.user.local.Classes;
-    courses = courses.map(function(c) { return c.class; });
-    ClassModel.find({ title : {$in: courses} }, function(err, c) {
-        console.log('classes ' + c);
-        if (err) throw err;
-        res.render('dashboard', {
-            user: req.user,
-            role: req.user.local.role,
-            classes: c
-        });
-    });
+    res.redirect('/profile');       
+    // var courses = req.user.local.Classes;
+    // courses = courses.map(function(c) { return c.class; });
+    // ClassModel.find({ title : {$in: courses} }, function(err, c) {
+    //     console.log('classes ' + c);
+    //     console.log('error: ', err);
+    //     // console.log('before throw');
+    //     if (err) throw err;
+    //     // console.log('before throw');
+    //     res.redirect('/profile');
+    //     // res.render('dashboard', {
+    //     //     user: req.user,
+    //     //     role: req.user.local.role,
+    //     //     classes: c
+    //     // });
+    // });
 }
 
 router.post('/profile/classes/new', addController, redirectController);
