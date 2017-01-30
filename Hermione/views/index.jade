@@ -7,9 +7,11 @@ block content
         video#vid(loop='loop', autoplay='autoplay')
           source(src="images/kanban-board.mp4" type="video/mp4")
       .split.left
-        .button.student student
+        a(href='/dashboard')
+          .button.student student
       .split.right
-        .button.teacher teacher
+        a(href='/dashboard')
+          .button.teacher teacher
       .infographic
         .box
           .logo.asucbg

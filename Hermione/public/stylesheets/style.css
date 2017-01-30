@@ -164,6 +164,7 @@ a {
     height: 200px;
     background-color: white;
     vertical-align: top;
+    box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.05);
 }
 
 .caption {
@@ -171,6 +172,7 @@ a {
     color: white;
     padding: 15px 0px;
     width: 250px;
+    box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.05);
 }
 
 .footer {

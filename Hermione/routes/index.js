@@ -15,7 +15,10 @@ var classSchema = mongoose.Schema({
                 timestamps : [{ time: Number, subject: String }]
             }],
     code: String,
-    year: String
+    year: String,
+    students: Number,
+    week: Number,
+    start: Date
 });
 
 var ClassModel = mongoose.model('classes', classSchema);
@@ -28,7 +31,9 @@ router.get('/', function(req, res) {
             user : req.user
         });
     } else {
-        res.render('index', {});
+        res.render('index', {
+            role : "debug"
+        });
     }
 });
 
@@ -85,6 +90,21 @@ router.get('/profile', isLoggedIn, function(req, res) {
         });
     });
 });
+
+router.get('/dashboard', function(req,res) {
+    var courses = ["EE16A", "CS160"];
+    var enrolled = ClassModel.find({title : {$in : courses} }, function(err, c) {
+        if (err || c == {}) {
+            res.render('dashboard', {
+                user: req.user
+            });
+        }
+        res.render('dashboard', {
+            role: "debug",
+            classes: c
+        });
+    });
+})
 
 /** 
  * Class Section

@@ -1,4 +1,5 @@
-/** Initialize dashboard using JQuery*/
+/** Initialize dashboard using JQuery 
+    Later plan on siwtching this to REACT or Angular.js */
 $(document).ready(function() {
     var videos = $('.video-item');
     var video_container = $('#video-container');
@@ -10,6 +11,24 @@ $(document).ready(function() {
         + id + '" frameborder="0" allowfullscreen></iframe>';
         video_container.html(video);
     }
+    $('.class-dashboard-card').first().attr('id', 'active-card');
+});
+
+$('.enroll').click(function() {
+    $(this).val('');
+    $(this).keypress(function(e) {
+        $('#submit-btn').css({'background-color': '#003262', "color" : "white", "border" : "#003262 3px solid"});
+    })
+});
+
+$('.class-dashboard-new').click(function() {
+    $('.enroll-bg').show("medium");
+    $('.enroll-module').show("medium");
+});
+
+$('.enroll-bg').click(function() {
+    $('.enroll.module').hide("medium");
+    $(this).hide("medium");
 });
 
 $('.video-item').click(function(){
@@ -22,7 +41,8 @@ $('.video-item').click(function(){
         var video_container = $('#video_container');
         var url = $(this).find('#url').attr('href');
         var id = getId(url);
-        $('#video-frame').attr('src', "//www.youtube.com/embed/" + id);
+        console.log("//www.youtube.com/embed/" + id + "?enablejsapi=1&origin=http://localhost");
+        $('#video-frame').attr('src', "//www.youtube.com/embed/" + id + "?enablejsapi=1&origin=http://localhost");
     }
 });
 

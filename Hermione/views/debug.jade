@@ -11,15 +11,7 @@ block extrahead
 - var role = #{user.local.role}
 block content
   script(type='text/javascript').
-    window.c = #{classes[0].videos};
-
-  .enroll-bg
-    .enroll-module
-      form(action='/profile/enroll', method='post')
-        h1 Class Code
-        input.enroll(type='text', name='code', value="Ex. abc")
-        .entry.submit
-          button#submit-btn(type='submit') Enroll
+    window.c = #{classes};
 
   .class-dashboard
     if (role == "professor")
@@ -29,14 +21,16 @@ block content
     else
       .class-dashboard-new.other
         p#new-text +
+        form(action='/profile/enroll', method='post')
+          input.enroll(type='text', name='code')
 
     each c in classes
       .class-dashboard-card
           h1.card-title=c.title
           .class-card-info
             .class-sub-card
-              h3 1
-              p professor
+              h3 5
+              p=role
             .class-sub-card
               h3 143
               p students
@@ -76,7 +70,7 @@ block content
                 .bookmark
                   i.fa.fa-bookmark-o#book
       .right-container
-        //- h1#video-name Lecture 1
+        h1#video-name Lecture 1
         .card-container#video-container
         .video-timeline
 

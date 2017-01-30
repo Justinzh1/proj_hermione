@@ -10,7 +10,10 @@ html
       .hermione
         a(href='/') hermione
       ul.navbar-side
-        if !user
+        if role == 'debug'
+          a(href="/dashboard")
+            li dashboard
+        else if !user
           a(href="/login")
             li login
           a(href="/signup")
