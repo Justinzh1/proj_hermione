@@ -11,12 +11,12 @@ $(document).ready(function() {
         + id + '" frameborder="0" allowfullscreen></iframe>';
         video_container.html(video);
     }
-    $('.class-dashboard-card').first().attr('id', 'active-card');
+    $('.class-dashboard-card:nth-child(3)').attr('id', 'active-card');
 });
 
 $('.class-dashboard-card').click(function() {
     if ($(this).attr('id') != 'active-card') {
-        window.location.href = '/cs160';
+        window.location.href = '/ee16a';
     }
 });
 

@@ -11,7 +11,7 @@ block extrahead
 - var role = #{user.local.role}
 block content
   script(type='text/javascript').
-    window.c = #{classes[0].videos};
+    window.c = #{classes[1].videos};
 
   .enroll-bg
     .enroll-module
@@ -45,17 +45,17 @@ block content
               p week
 
   .dashboard
-    - var check = classes[0]
+    - var check = classes[1]
     if (check)
       .video-container
         .videolist
           .video-header
             i.fa.fa-window-maximize.icon
-            h1 #{classes[0].title}
-            p.desc #{classes[0].description}
+            h1 #{classes[1].title}
+            p.desc #{classes[1].description}
             .instructors
               .instructor
-                - var prof = classes[0].professors
+                - var prof = classes[1].professors
                   each t in prof
                     p=t.name
           .video-sublist
@@ -65,7 +65,7 @@ block content
                   .video-item-new.new-video-item 
                     p +
                     
-            - var lectures = classes[0].videos
+            - var lectures = classes[1].videos
             each l in lectures
               .video-item
                 h2.title=l.title
@@ -80,4 +80,4 @@ block content
         .video-timeline
 
   script(type='text/javascript', src='https://code.jquery.com/jquery-3.1.1.slim.min.js')
-  script(src='javascripts/dashboard.js')
+  script(src='javascripts/dashboardcs160.js')

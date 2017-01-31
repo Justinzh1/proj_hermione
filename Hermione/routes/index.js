@@ -91,7 +91,7 @@ router.get('/profile', isLoggedIn, function(req, res) {
     });
 });
 
-router.get('/dashboard', function(req,res) {
+router.get('/ee16a', function(req,res) {
     var courses = ["EE16A", "CS160"];
     var enrolled = ClassModel.find({title : {$in : courses} }, function(err, c) {
         if (err || c == {}) {
@@ -100,6 +100,21 @@ router.get('/dashboard', function(req,res) {
             });
         }
         res.render('dashboard', {
+            role: "debug",
+            classes: c
+        });
+    });
+})
+
+router.get('/cs160', function(req,res) {
+    var courses = ["EE16A", "CS160"];
+    var enrolled = ClassModel.find({title : {$in : courses} }, function(err, c) {
+        if (err || c == {}) {
+            res.render('dashboardcs160', {
+                user: req.user
+            });
+        }
+        res.render('dashboardcs160', {
             role: "debug",
             classes: c
         });

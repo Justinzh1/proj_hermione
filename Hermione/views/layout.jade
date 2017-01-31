@@ -11,17 +11,17 @@ html
         a(href='/') hermione
       ul.navbar-side
         if role == 'debug'
-          a(href="/dashboard")
-            li dashboard
+          a(href="/ee16a")
+            li DASHBOARD
         else if !user
           a(href="/login")
-            li login
+            li LOGIN
           a(href="/signup")
-            li signup
+            li SIGNUP
         else
           a(href="/profile")
-            li profile
+            li PROFILE
           a(href="/logout")
-            li logout
+            li LOGOUT
 
     block content

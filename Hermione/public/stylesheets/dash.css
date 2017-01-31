@@ -136,6 +136,7 @@ p {
     height: 100%;
     vertical-align: top;
     padding-left: 25px;
+    overflow: visible;    
 }
 
 .video-header {
@@ -191,11 +192,13 @@ p {
 .video-sublist {
     height: 300px;
     padding-bottom: 20px;
+    width: calc(100% + 10px);
     /*background-color: rgba(0,50,0,0.3);*/
     overflow-y: scroll;
     text-align: left;
     position: relative;
     vertical-align: top;
+    overflow-x: visible;
 }
 
 .new-video-item {
@@ -219,11 +222,13 @@ p {
     display: inline-block;
     padding: 10px;
     height: 60px;
-    width: 92%;
+    width: calc(100% - 30px);
     margin-top: 20px;
     background-color: #eeeeee;
     text-align: left;
-    transition: background-color 500ms;
+    position: relative;
+    z-index: 15;
+    /*transition: background-color 500ms;*/
     box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.13);
 }
 
@@ -278,7 +283,7 @@ p {
 }
 
 #active {
-    background-color: #003262;
+    background-color: #00A598;
     color: white;
 }
 
