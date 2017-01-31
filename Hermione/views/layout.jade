@@ -10,18 +10,15 @@ html
       .hermione
         a(href='/') hermione
       ul.navbar-side
-        if role == 'debug'
-          a(href="/ee16a")
-            li DASHBOARD
-        else if !user
+        if !user
           a(href="/login")
-            li LOGIN
+            li login
           a(href="/signup")
-            li SIGNUP
+            li signup
         else
           a(href="/profile")
-            li PROFILE
+            li profile
           a(href="/logout")
-            li LOGOUT
+            li logout
 
     block content

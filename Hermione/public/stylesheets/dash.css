@@ -205,6 +205,8 @@ p {
     text-align: center;
     font-size: 36px;
     width: 100%;
+    box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.13);
+    background-color: #EEEEEE;
 }
 
 .new-video-item p {
@@ -228,7 +230,6 @@ p {
     text-align: left;
     position: relative;
     z-index: 15;
-    /*transition: background-color 500ms;*/
     box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.13);
 }
 

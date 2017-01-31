@@ -18,8 +18,7 @@ var login = require('./routes/login');
 var students = require('./routes/students');
 var classes = require('./routes/classes');
 
-var db = mongoose.connect('mongodb://localhost/users');
-var classesObj = require('./model/class')
+var models = require('./model/models.js');
 
 var app = express();
 

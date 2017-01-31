@@ -2,27 +2,29 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var mongoose = require('mongoose');
+var model = require('../model/models');
+var ClassModel = model.Class;
 
-var classSchema = mongoose.Schema({
-    title: String,
-    description: String,
-    professors: [{ name: String }],
-    videos: [{ 
-                title: String, 
-                id: Number, 
-                link: String, 
-                date: Date,
-                timestamps : [{ time: Number, subject: String }]
-            }],
-    code: String,
-    year: String,
-    students: Number,
-    week: Number,
-    start: Date
-});
+// var classSchema = mongoose.Schema({
+//     title: String,
+//     description: String,
+//     professors: [{ name: String }],
+//     videos: [{ 
+//                 title: String, 
+//                 id: Number, 
+//                 link: String, 
+//                 date: Date,
+//                 timestamps : [{ time: Number, subject: String }]
+//             }],
+//     code: String,
+//     year: String,
+//     students: Number,
+//     week: Number,
+//     start: Date
+// });
 
-var ClassModel = mongoose.model('classes', classSchema);
-var db = mongoose.model('classes');
+// var ClassModel = mongoose.model('classes', classSchema);
+// var db = mongoose.model('classes');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -91,35 +93,35 @@ router.get('/profile', isLoggedIn, function(req, res) {
     });
 });
 
-router.get('/ee16a', function(req,res) {
-    var courses = ["EE16A", "CS160"];
-    var enrolled = ClassModel.find({title : {$in : courses} }, function(err, c) {
-        if (err || c == {}) {
-            res.render('dashboard', {
-                user: req.user
-            });
-        }
-        res.render('dashboard', {
-            role: "debug",
-            classes: c
-        });
-    });
-})
+// router.get('/ee16a', function(req,res) {
+//     var courses = ["EE16A", "CS160"];
+//     var enrolled = ClassModel.find({title : {$in : courses} }, function(err, c) {
+//         if (err || c == {}) {
+//             res.render('dashboard', {
+//                 user: req.user
+//             });
+//         }
+//         res.render('dashboard', {
+//             role: "debug",
+//             classes: c
+//         });
+//     });
+// })
 
-router.get('/cs160', function(req,res) {
-    var courses = ["EE16A", "CS160"];
-    var enrolled = ClassModel.find({title : {$in : courses} }, function(err, c) {
-        if (err || c == {}) {
-            res.render('dashboardcs160', {
-                user: req.user
-            });
-        }
-        res.render('dashboardcs160', {
-            role: "debug",
-            classes: c
-        });
-    });
-})
+// router.get('/cs160', function(req,res) {
+//     var courses = ["EE16A", "CS160"];
+//     var enrolled = ClassModel.find({title : {$in : courses} }, function(err, c) {
+//         if (err || c == {}) {
+//             res.render('dashboardcs160', {
+//                 user: req.user
+//             });
+//         }
+//         res.render('dashboardcs160', {
+//             role: "debug",
+//             classes: c
+//         });
+//     });
+// })
 
 /** 
  * Class Section
@@ -176,21 +178,6 @@ function addController(req,res,next) {
 
 function redirectController(req,res) {
     res.redirect('/profile');       
-    // var courses = req.user.local.Classes;
-    // courses = courses.map(function(c) { return c.class; });
-    // ClassModel.find({ title : {$in: courses} }, function(err, c) {
-    //     console.log('classes ' + c);
-    //     console.log('error: ', err);
-    //     // console.log('before throw');
-    //     if (err) throw err;
-    //     // console.log('before throw');
-    //     res.redirect('/profile');
-    //     // res.render('dashboard', {
-    //     //     user: req.user,
-    //     //     role: req.user.local.role,
-    //     //     classes: c
-    //     // });
-    // });
 }
 
 router.post('/profile/classes/new', addController, redirectController);
