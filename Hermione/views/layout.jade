@@ -12,16 +12,16 @@ html
       ul.navbar-side
         if role == 'debug'
           a(href="/ee16a")
-            li DASHBOARD
+            li.nav-text DASHBOARD
         else if !user
           a(href="/login")
-            li LOGIN
+            li.nav-text LOGIN
           a(href="/signup")
-            li SIGNUP
+            li.nav-text SIGNUP
         else
           a(href="/profile")
-            li PROFILE
+            li.nav-text PROFILE
           a(href="/logout")
-            li LOGOUT
+            li.nav-text LOGOUT
 
     block content

@@ -17,6 +17,7 @@ var classSchema = mongoose.Schema({
     code: String,
     year: String,
     students: Number,
+    numprofessors: Number,
     week: Number,
     start: Date
 });

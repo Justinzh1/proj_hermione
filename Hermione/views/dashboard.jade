@@ -26,7 +26,7 @@ block content
       a(href='/profile/classes/new')
         .class-dashboard-new.other
           p#new-text +
-    else
+    else if (false)
       .class-dashboard-new.other
         p#new-text +
 
@@ -35,13 +35,13 @@ block content
           h1.card-title=c.title
           .class-card-info
             .class-sub-card
-              h3 1
+              h3=c.numprofessors
               p professor
             .class-sub-card
-              h3 143
+              h3=c.students
               p students
             .class-sub-card
-              h3 12
+              h3=c.week
               p week
 
   .dashboard

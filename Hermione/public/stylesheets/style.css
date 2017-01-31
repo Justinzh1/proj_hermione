@@ -197,6 +197,12 @@ a {
     color: white;
 }
 
+.nav-text {
+    font-size: 16px;
+    font-family: "Fira Sans";
+    font-weight: 500;
+}
+
 @media (max-width: 850px) {
     .split {
         width: 100%;
