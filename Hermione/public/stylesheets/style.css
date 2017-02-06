@@ -214,6 +214,10 @@ a {
     margin-top: 20px;
 }
 
+.subfooter > p {
+    line-height: 20px;
+}
+
 .rights {
     padding: 10px;
     background-color: #003262;

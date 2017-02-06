@@ -12,6 +12,7 @@ var classSchema = mongoose.Schema({
                 id: Number, 
                 link: String, 
                 date: Date,
+                datestr: String,
                 timestamps : [{ time: Number, subject: String }],
                 length: Number
             }],
