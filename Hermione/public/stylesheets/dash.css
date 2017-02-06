@@ -13,6 +13,21 @@ p {
     padding: 0;
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+    opacity: 0.8;
+}
+
+::-webkit-scrollbar-track {
+    /*background-color: */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #00A598;
+    box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.13);
+}
+
+
 #new-card {
     font-size: 80px;
     margin: 0;
@@ -190,10 +205,10 @@ p {
 }
 
 .video-sublist {
-    height: 300px;
+    height: 40vh;
     padding-bottom: 20px;
-    width: calc(100% + 10px);
-    /*background-color: rgba(0,50,0,0.3);*/
+    margin-top: 20px;
+    width: calc(100%);
     overflow-y: scroll;
     text-align: left;
     position: relative;
@@ -223,7 +238,7 @@ p {
     padding: 10px;
     height: 60px;
     width: calc(100% - 30px);
-    margin-top: 20px;
+    margin-bottom: 20px;
     background-color: #eeeeee;
     text-align: left;
     position: relative;

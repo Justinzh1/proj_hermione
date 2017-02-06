@@ -12,14 +12,15 @@ var classSchema = mongoose.Schema({
                 id: Number, 
                 link: String, 
                 date: Date,
-                timestamps : [{ time: Number, subject: String }]
+                timestamps : [{ time: Number, subject: String }],
+                length: Number
             }],
     code: String,
     year: String,
     students: Number,
     numprofessors: Number,
     week: Number,
-    start: Date
+    start: Date,
 });
 
 var ClassModel = mongoose.model('classes', classSchema);

@@ -36,13 +36,13 @@ block content
           .class-card-info
             .class-sub-card
               h3=c.numprofessors
-              p professor
+              p professor(s)
             .class-sub-card
               h3=c.students
               p students
             .class-sub-card
-              h3=c.week
-              p week
+              h3 2017
+              p Spring
 
   .dashboard
     - var check = classes[0]
@@ -71,7 +71,7 @@ block content
                 h2.title=l.title
                 a#url(href=l.link) 
                   i.fa.fa-link
-                p.length 43 min
+                p.length=l.length + " min"
                 p Jan 13 2017
                 .bookmark
                   i.fa.fa-bookmark-o#book

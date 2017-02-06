@@ -12,6 +12,21 @@ a {
   text-decoration: none;
 }
 
+/*::-webkit-scrollbar {
+    width: 8px;
+    opacity: 0.8;
+    display: none;
+}
+
+::-webkit-scrollbar-track {
+    display: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #003262;
+    display: none;
+}*/
+
 #bg {
     width: 100%;
     position: absolute;
@@ -53,6 +68,11 @@ a {
     top: 50%;
     transform: translateY(-50%);
     width: 80%;
+    height: auto;
+}
+
+.img-subtitle {
+    width: 120px;
     height: auto;
 }
 
@@ -139,6 +159,7 @@ a {
     border: 2px solid white;
     position: relative;
     top: 60%;
+    font-size: 24px;
     border-radius: 40px;
 }
 
@@ -189,6 +210,8 @@ a {
     width: 250px;
     text-align: left;
     vertical-align: top;
+    font-size: 16px;
+    margin-top: 20px;
 }
 
 .rights {
