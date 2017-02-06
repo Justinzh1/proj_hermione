@@ -11,7 +11,7 @@ $(document).ready(function() {
         + id + '" frameborder="0" allowfullscreen></iframe>';
         video_container.html(video);
     }
-    $('.class-dashboard-card:nth-child(3)').attr('id', 'active-card');
+    $('.class-dashboard-card:nth-child(2)').attr('id', 'active-card');
 });
 
 $('.class-dashboard-card').click(function() {
