@@ -205,7 +205,8 @@ p {
 }
 
 .video-sublist {
-    height: 40vh;
+    height: auto;
+    max-height: 40vh;
     padding-bottom: 20px;
     margin-top: 20px;
     width: calc(100%);
@@ -385,7 +386,7 @@ input:focus {
     color: #EEEEEE;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     .right-container {
         position: relative;
         transform: translateX(-50%);
