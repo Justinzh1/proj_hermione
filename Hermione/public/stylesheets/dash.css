@@ -136,7 +136,7 @@ p {
 .dashboard {
     width: 100%;
     height: calc(100% - 230px);
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
 }
 
 .video-container {
@@ -383,4 +383,13 @@ input:focus {
 .active-button {
     background-color: #003262;
     color: #EEEEEE;
+}
+
+@media (max-width: 800px) {
+    .right-container {
+        position: relative;
+        transform: translateX(-50%);
+        left: 50%;
+        margin-top: 50px;
+    }
 }
